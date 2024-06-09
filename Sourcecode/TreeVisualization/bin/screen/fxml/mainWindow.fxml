@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <BorderPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #F5F5F5;" BorderPane.alignment="CENTER">
+         <center>
+            <VBox alignment="CENTER" spacing="20.0" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnGenericTree" mnemonicParsing="false" onAction="#btnGenericTreePressed" prefHeight="40.0" prefWidth="260.0" style="-fx-background-color: #A78295; -fx-text-fill: white; -fx-font-size: 16px;" text="Generic Tree" />
+                  <Button fx:id="btnBinaryTree" mnemonicParsing="false" onAction="#btnBinaryTreePressed" prefHeight="40.0" prefWidth="260.0" style="-fx-background-color: #A78295; -fx-text-fill: white; -fx-font-size: 16px;" text="Binary Tree" />
+                  <Button fx:id="btnBalancedTree" mnemonicParsing="false" onAction="#btnBalancedTreePressed" prefHeight="40.0" prefWidth="260.0" style="-fx-background-color: #A78295; -fx-text-fill: white; -fx-font-size: 16px;" text="Balanced Tree" />
+                  <Button fx:id="btnBalancedBinaryTree" mnemonicParsing="false" onAction="#btnBalancedBinaryTreePressed" prefHeight="40.0" prefWidth="260.0" style="-fx-background-color: #A78295; -fx-text-fill: white; -fx-font-size: 16px;" text="Balanced Binary Tree" />
+                  <Button fx:id="btnExit" mnemonicParsing="false" onAction="#btnExitPressed" prefHeight="40.0" prefWidth="260.0" style="-fx-background-color: #FF6F61; -fx-text-fill: white; -fx-font-size: 16px;" text="Exit" />
+                  <Button fx:id="HelpButton" mnemonicParsing="false" onAction="#helpPressed" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #688d8f; -fx-text-fill: white; -fx-font-size: 16px;" text="Help" translateY="20.0" />
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="600.0" text="Tree Data Structure Visualizer" textAlignment="CENTER" textFill="#688d8f">
+                     <font>
+                        <Font name="Arial Bold" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+   </center>
+</BorderPane>
+
