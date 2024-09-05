@@ -1,4 +1,6 @@
-Final OOP Project - Tree Visualization
+## Final OOP Project - Tree Visualization
+
+## Team Members
 
 1, Vũ Hải Đăng - 20225962
 
