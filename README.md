@@ -1,4 +1,4 @@
-## Final OOP Project - Tree Visualization
+## Final OOP Project - Tree Visualization - IT3100E
 
 ## Team Members
 
