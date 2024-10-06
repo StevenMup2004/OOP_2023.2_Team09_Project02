@@ -19,7 +19,7 @@ import javafx.animation.Animation.Status;
 import java.util.ArrayList;
 
 public class GenericTree {
-    private static final Node NULL = null;
+	private static final Node NULL = null;
     public boolean isTimelineRunning = true;
     Node copyTree = new Node(0);
     public Node rootNode;
@@ -29,11 +29,11 @@ public class GenericTree {
     protected Timeline timeline;
 
     protected Color recColor1 = Color.web("#99f28a");
-    protected Color recColor2 = Color.BLUE;
+    protected Color recColor2 = Color.CHOCOLATE;
 
-    protected Color NOT_VISIT_COLOR = Color.WHITE;
-    protected Color VISIT_COLOR = Color.BLUE;
-
+    protected Color NOT_VISIT_COLOR = Color.CHOCOLATE;
+ //   protected Color VISIT_COLOR = Color.BURLYWOOD;
+    protected Color VISIT_COLOR = Color.rgb(0, 102, 153);
     protected ArrayList<Node> queue;
     private ArrayList<Node> stack;
 
@@ -581,6 +581,10 @@ public class GenericTree {
             this.getTreeController().getRecPseudoSearch2().setFill(recColor2);
             this.getTreeController().getRecPseudoSearch3().setFill(recColor2);
             this.getTreeController().getRecPseudoSearch1().setFill(recColor1);
+            this.getTreeController().getRecPseudoSearch4().setFill(recColor1);
+            this.getTreeController().getRecPseudoSearch5().setFill(recColor1);
+            this.getTreeController().getRecPseudoSearch6().setFill(recColor1);
+            this.getTreeController().getRecPseudoSearch7().setFill(recColor1);
 
             traverseNode = queue.remove(0);
         }
@@ -592,19 +596,18 @@ public class GenericTree {
                 PauseTransition pause = new PauseTransition(Duration.seconds(0.43));
                 pause.setOnFinished(event -> {
 
-                    this.getTreeController().getRecPseudoSearch2().setFill(recColor1);
-                    this.getTreeController().getRecPseudoSearch3().setFill(recColor1);
-                    this.getTreeController().getRecPseudoSearch4().setFill(recColor2);
-                    this.getTreeController().getRecPseudoSearch5().setFill(recColor2);
+                	this.getTreeController().getRecPseudoSearch2().setFill(recColor2);
+                    this.getTreeController().getRecPseudoSearch3().setFill(recColor2);
+                    this.getTreeController().getRecPseudoSearch1().setFill(recColor1);
+                    this.getTreeController().getRecPseudoSearch4().setFill(recColor1);
+                    this.getTreeController().getRecPseudoSearch5().setFill(recColor1);
+                    this.getTreeController().getRecPseudoSearch6().setFill(recColor1);
+                    this.getTreeController().getRecPseudoSearch7().setFill(recColor1);
 
                 });
 
                 pause.play();
-                if (traverseNode.getNodeId() == Id) {
-                    timeline.stop();
-                }
-                ;
-
+            
             } catch (NullPointerException e) {
                 traverseNode.getCircle().setFill(VISIT_COLOR);
                 System.out.println(traverseNode.getNodeId() + " " + traverseNode.getDepth());
@@ -621,9 +624,13 @@ public class GenericTree {
             this.getTreeController().getRecPseudoSearch3().setFill(recColor1);
             this.getTreeController().getRecPseudoSearch4().setFill(recColor2);
             this.getTreeController().getRecPseudoSearch5().setFill(recColor2);
+            this.getTreeController().getRecPseudoSearch6().setFill(recColor1);
+            this.getTreeController().getRecPseudoSearch7().setFill(recColor1);
+            this.getTreeController().getRecPseudoSearch1().setFill(recColor1);
 
             if (traverseNode.getNodeId() == Id) {
                 timeline.stop();
+                return;
             }
             traverseNode.setState(3);
         } else if (traverseNode.getState() == 3) { // TH2
@@ -633,6 +640,9 @@ public class GenericTree {
             this.getTreeController().getRecPseudoSearch5().setFill(recColor1);
             this.getTreeController().getRecPseudoSearch6().setFill(recColor2);
             this.getTreeController().getRecPseudoSearch7().setFill(recColor2);
+            this.getTreeController().getRecPseudoSearch1().setFill(recColor1);
+            this.getTreeController().getRecPseudoSearch2().setFill(recColor1);
+            this.getTreeController().getRecPseudoSearch3().setFill(recColor1);
 
             if (traverseNode.getNumChildren() > 0) { // add con nếu có
                 for (Node n : traverseNode.getListOfChildren()) {
@@ -647,6 +657,9 @@ public class GenericTree {
             this.getTreeController().getRecPseudoSearch7().setFill(recColor1);
             this.getTreeController().getRecPseudoSearch2().setFill(recColor2);
             this.getTreeController().getRecPseudoSearch3().setFill(recColor2);
+            this.getTreeController().getRecPseudoSearch1().setFill(recColor1);
+            this.getTreeController().getRecPseudoSearch4().setFill(recColor1);
+            this.getTreeController().getRecPseudoSearch5().setFill(recColor1);
 
             if (queue.size() > 0) { // lấy node đầu của queue ra
                 traverseNode = queue.remove(0);
@@ -780,6 +793,11 @@ public class GenericTree {
             this.getTreeController().getRecPseudoUpdate2().setFill(recColor2);
             this.getTreeController().getRecPseudoUpdate3().setFill(recColor2);
             this.getTreeController().getRecPseudoUpdate1().setFill(recColor1);
+            this.getTreeController().getRecPseudoUpdate4().setFill(recColor1);
+            this.getTreeController().getRecPseudoUpdate5().setFill(recColor1);
+            this.getTreeController().getRecPseudoUpdate6().setFill(recColor1);
+            this.getTreeController().getRecPseudoUpdate7().setFill(recColor1);
+            
 
             traverseNode = queue.remove(0);
         }
@@ -791,29 +809,22 @@ public class GenericTree {
                 PauseTransition pause = new PauseTransition(Duration.seconds(0.43));
                 pause.setOnFinished(event -> {
 
-                    this.getTreeController().getRecPseudoUpdate2().setFill(recColor1);
-                    this.getTreeController().getRecPseudoUpdate3().setFill(recColor1);
-                    this.getTreeController().getRecPseudoUpdate4().setFill(recColor2);
-                    this.getTreeController().getRecPseudoUpdate5().setFill(recColor2);
-
+                	this.getTreeController().getRecPseudoUpdate2().setFill(recColor2);
+                    this.getTreeController().getRecPseudoUpdate3().setFill(recColor2);
+                    this.getTreeController().getRecPseudoUpdate1().setFill(recColor1);
+                    this.getTreeController().getRecPseudoUpdate4().setFill(recColor1);
+                    this.getTreeController().getRecPseudoUpdate5().setFill(recColor1);
+                    this.getTreeController().getRecPseudoUpdate6().setFill(recColor1);
+                    this.getTreeController().getRecPseudoUpdate7().setFill(recColor1);
                 });
 
                 pause.play();
-                if (traverseNode.getNodeId() == OldId) {
-                    traverseNode.updateId(NewId);
-                    traverseNode.setState(5);
-                    timeline.stop();
-                }
+          
 
             } catch (NullPointerException e) {
                 traverseNode.getCircle().setFill(VISIT_COLOR);
                 System.out.println(traverseNode.getNodeId() + " " + traverseNode.getDepth());
-                traverseNode.setState(2);
-                if (traverseNode.getNodeId() == OldId) {
-                    traverseNode.updateId(NewId);
-                    timeline.stop();
-                }
-                traverseNode.setState(3);
+                
             }
         } else if (traverseNode.getState() == 2) {
 
@@ -821,12 +832,17 @@ public class GenericTree {
             this.getTreeController().getRecPseudoUpdate3().setFill(recColor1);
             this.getTreeController().getRecPseudoUpdate4().setFill(recColor2);
             this.getTreeController().getRecPseudoUpdate5().setFill(recColor2);
+            this.getTreeController().getRecPseudoUpdate1().setFill(recColor1);
+            this.getTreeController().getRecPseudoUpdate6().setFill(recColor1);
+            this.getTreeController().getRecPseudoUpdate7().setFill(recColor1);
+            
 
             if (traverseNode.getNodeId() == OldId) {
                 traverseNode.updateId(NewId);
                 timeline.stop();
+                return;
             }
-            traverseNode.setState(3);
+            else traverseNode.setState(3);
         } else if (traverseNode.getState() == 3) { // TH2
             // thay đổi màu
 
@@ -834,6 +850,9 @@ public class GenericTree {
             this.getTreeController().getRecPseudoUpdate5().setFill(recColor1);
             this.getTreeController().getRecPseudoUpdate6().setFill(recColor2);
             this.getTreeController().getRecPseudoUpdate7().setFill(recColor2);
+            this.getTreeController().getRecPseudoUpdate1().setFill(recColor1);
+            this.getTreeController().getRecPseudoUpdate2().setFill(recColor1);
+            this.getTreeController().getRecPseudoUpdate3().setFill(recColor1);
 
             if (traverseNode.getNumChildren() > 0) { // add con nếu có
                 for (Node n : traverseNode.getListOfChildren()) {
@@ -848,6 +867,10 @@ public class GenericTree {
             this.getTreeController().getRecPseudoUpdate7().setFill(recColor1);
             this.getTreeController().getRecPseudoUpdate2().setFill(recColor2);
             this.getTreeController().getRecPseudoUpdate3().setFill(recColor2);
+            
+            this.getTreeController().getRecPseudoUpdate1().setFill(recColor1);
+            this.getTreeController().getRecPseudoUpdate4().setFill(recColor1);
+            this.getTreeController().getRecPseudoUpdate5().setFill(recColor1);
 
             if (queue.size() > 0) { // lấy node đầu của queue ra
                 traverseNode = queue.remove(0);
@@ -986,6 +1009,11 @@ public class GenericTree {
             this.getTreeController().getRecPseudoDelete2().setFill(recColor2);
             this.getTreeController().getRecPseudoDelete3().setFill(recColor2);
             this.getTreeController().getRecPseudoDelete1().setFill(recColor1);
+            this.getTreeController().getRecPseudoDelete4().setFill(recColor1);
+            this.getTreeController().getRecPseudoDelete5().setFill(recColor1);
+            this.getTreeController().getRecPseudoDelete6().setFill(recColor1);
+            this.getTreeController().getRecPseudoDelete7().setFill(recColor1);
+            
             traverseNode = queue.remove(0);
         }
         System.out.println("Delete node");
@@ -1000,45 +1028,26 @@ public class GenericTree {
                 PauseTransition pause = new PauseTransition(Duration.seconds(0.43));
                 pause.setOnFinished(event -> {
 
-                    this.getTreeController().getRecPseudoDelete2().setFill(recColor1);
-                    this.getTreeController().getRecPseudoDelete3().setFill(recColor1);
-                    this.getTreeController().getRecPseudoDelete4().setFill(recColor2);
-                    this.getTreeController().getRecPseudoDelete5().setFill(recColor2);
+                	this.getTreeController().getRecPseudoDelete2().setFill(recColor2);
+                    this.getTreeController().getRecPseudoDelete3().setFill(recColor2);
+                    this.getTreeController().getRecPseudoDelete1().setFill(recColor1);
+                    this.getTreeController().getRecPseudoDelete4().setFill(recColor1);
+                    this.getTreeController().getRecPseudoDelete5().setFill(recColor1);
+                    this.getTreeController().getRecPseudoDelete6().setFill(recColor1);
+                    this.getTreeController().getRecPseudoDelete7().setFill(recColor1);
+                 
 
                 });
 
                 pause.play();
-                copyTree = copyTree.copyNode(this.getRootNode());
-                if (traverseNode.getNodeId() == Id) {
-                    System.out.println("Start Equal");
-                    if (!traverseNode.equals(this.getRootNode())) {
-                        traverseNode.getParentNode().getListOfChildren().remove(traverseNode);
-                    }
-                    deleteSubtree(traverseNode, scenePane);
-                    rebuildTree(scenePane);
-                    traverseNode.setState(5);
-                    timeline.stop();
-                } else
-                    traverseNode.setState(3);
+                
 
             } catch (NullPointerException e) {
                 traverseNode.getCircle().setFill(VISIT_COLOR);
                 System.out.println("Error");
                 System.out.println(traverseNode.getNodeId() + " " + traverseNode.getDepth()); // print node tmp
-                traverseNode.setState(2);
-                if (traverseNode.getNodeId() == Id) {
-                    copyTree = copyTree.copyNode(this.getRootNode());
-
-                    if (!traverseNode.equals(this.getRootNode())) {
-                        traverseNode.getParentNode().getListOfChildren().remove(traverseNode);
-                    }
-                    deleteSubtree(traverseNode, scenePane);
-                    rebuildTree(scenePane);
-                    traverseNode.setState(5);
-                    timeline.stop();
-
-                }
-                traverseNode.setState(3);
+               
+      
 
             }
         } else if (traverseNode.getState() == 2) {
@@ -1046,18 +1055,24 @@ public class GenericTree {
             this.getTreeController().getRecPseudoDelete3().setFill(recColor1);
             this.getTreeController().getRecPseudoDelete4().setFill(recColor2);
             this.getTreeController().getRecPseudoDelete5().setFill(recColor2);
+            this.getTreeController().getRecPseudoDelete1().setFill(recColor1);
+            this.getTreeController().getRecPseudoDelete6().setFill(recColor1);
+            this.getTreeController().getRecPseudoDelete7().setFill(recColor1);
+     
+            
+            copyTree = copyTree.copyNode(this.getRootNode());
             if (traverseNode.getNodeId() == Id) {
-                copyTree = copyTree.copyTree(rootNode);
+                System.out.println("Start Equal");
                 if (!traverseNode.equals(this.getRootNode())) {
                     traverseNode.getParentNode().getListOfChildren().remove(traverseNode);
                 }
-
                 deleteSubtree(traverseNode, scenePane);
                 rebuildTree(scenePane);
                 traverseNode.setState(5);
                 timeline.stop();
-            }
-            traverseNode.setState(3);
+                return;
+            } else
+                traverseNode.setState(3);
 
         }
 
@@ -1067,6 +1082,10 @@ public class GenericTree {
             this.getTreeController().getRecPseudoDelete5().setFill(recColor1);
             this.getTreeController().getRecPseudoDelete6().setFill(recColor2);
             this.getTreeController().getRecPseudoDelete7().setFill(recColor2);
+            this.getTreeController().getRecPseudoDelete1().setFill(recColor1);
+            this.getTreeController().getRecPseudoDelete2().setFill(recColor1);
+            this.getTreeController().getRecPseudoDelete3().setFill(recColor1);
+            
             if (traverseNode.getNumChildren() > 0) { // add con nếu có
                 for (Node n : traverseNode.getListOfChildren()) {
                     queue.add(n);
@@ -1080,6 +1099,9 @@ public class GenericTree {
             this.getTreeController().getRecPseudoDelete7().setFill(recColor1);
             this.getTreeController().getRecPseudoDelete2().setFill(recColor2);
             this.getTreeController().getRecPseudoDelete3().setFill(recColor2);
+            this.getTreeController().getRecPseudoDelete1().setFill(recColor1);
+            this.getTreeController().getRecPseudoDelete4().setFill(recColor1);
+            this.getTreeController().getRecPseudoDelete5().setFill(recColor1);
             if (queue.size() > 0) { // lấy node đầu của queue ra
                 traverseNode = queue.remove(0);
             } else {
@@ -1255,6 +1277,10 @@ public class GenericTree {
             this.getTreeController().getRecPseudoInsert2().setFill(recColor2);
             this.getTreeController().getRecPseudoInsert3().setFill(recColor2);
             this.getTreeController().getRecPseudoInsert1().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsert4().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsert5().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsert6().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsert7().setFill(recColor1);
 
             traverseNode = queue.remove(0);
         }
@@ -1266,38 +1292,22 @@ public class GenericTree {
                 PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
                 pause.setOnFinished(event -> {
 
-                    this.getTreeController().getRecPseudoInsert2().setFill(recColor1);
-                    this.getTreeController().getRecPseudoInsert3().setFill(recColor1);
-                    this.getTreeController().getRecPseudoInsert4().setFill(recColor2);
-                    this.getTreeController().getRecPseudoInsert5().setFill(recColor2);
-
+                	 this.getTreeController().getRecPseudoInsert2().setFill(recColor2);
+                     this.getTreeController().getRecPseudoInsert3().setFill(recColor2);
+                     this.getTreeController().getRecPseudoInsert1().setFill(recColor1);
+                     this.getTreeController().getRecPseudoInsert4().setFill(recColor1);
+                     this.getTreeController().getRecPseudoInsert5().setFill(recColor1);
+                     this.getTreeController().getRecPseudoInsert6().setFill(recColor1);
+                     this.getTreeController().getRecPseudoInsert7().setFill(recColor1);
                 });
 
                 pause.play();
 
-                if (traverseNode.getNodeId() == parentId) {
-                    Node childNode = new Node(childID);
-                    traverseNode.addChild(childNode);
-
-                    scenePane.getChildren().add(childNode.getParentLine());
-                    scenePane.getChildren().add(childNode);
-                    traverseNode.setState(5);
-                    timeline.stop();
-                    isTimelineRunning = false;
-
-                } else
-                    traverseNode.setState(3);
-
+            
             } catch (NullPointerException e) {
                 traverseNode.getCircle().setFill(VISIT_COLOR);
                 System.out.println(traverseNode.getNodeId() + " " + traverseNode.getDepth());
                 traverseNode.setState(2);
-                if (traverseNode.getNodeId() == parentId) {
-                    traverseNode.setState(5);
-                    timeline.stop();
-                    isTimelineRunning = false;
-                } else
-                    traverseNode.setState(3);
             }
         } else if (traverseNode.getState() == 2) {
 
@@ -1305,6 +1315,9 @@ public class GenericTree {
             this.getTreeController().getRecPseudoInsert3().setFill(recColor1);
             this.getTreeController().getRecPseudoInsert4().setFill(recColor2);
             this.getTreeController().getRecPseudoInsert5().setFill(recColor2);
+            this.getTreeController().getRecPseudoInsert1().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsert6().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsert7().setFill(recColor1);
 
             if (traverseNode.getNodeId() == parentId) {
                 Node childNode = new Node(childID);
@@ -1314,6 +1327,7 @@ public class GenericTree {
                 traverseNode.setState(5);
                 timeline.stop();
                 isTimelineRunning = false;
+                return;
 
             } else
                 traverseNode.setState(3);
@@ -1324,6 +1338,10 @@ public class GenericTree {
             this.getTreeController().getRecPseudoInsert5().setFill(recColor1);
             this.getTreeController().getRecPseudoInsert6().setFill(recColor2);
             this.getTreeController().getRecPseudoInsert7().setFill(recColor2);
+            
+            this.getTreeController().getRecPseudoInsert1().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsert2().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsert3().setFill(recColor1);
 
             if (traverseNode.getNumChildren() > 0) { // add con nếu có
                 for (Node n : traverseNode.getListOfChildren()) {
@@ -1338,6 +1356,9 @@ public class GenericTree {
             this.getTreeController().getRecPseudoInsert7().setFill(recColor1);
             this.getTreeController().getRecPseudoInsert2().setFill(recColor2);
             this.getTreeController().getRecPseudoInsert3().setFill(recColor2);
+            this.getTreeController().getRecPseudoInsert1().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsert4().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsert5().setFill(recColor1);
 
             if (queue.size() > 0) { // lấy node đầu của queue ra
                 traverseNode = queue.remove(0);
@@ -1720,11 +1741,12 @@ public class GenericTree {
 
     public void startTraverseTreeBFS() {
         queue = new ArrayList<Node>();
-
+       
+        System.out.println("HELLO TEST");
         queue.add(rootNode);
         this.getTreeController().getRecPseudoBFS1().setFill(recColor2);
         this.treeController.getvBoxSearch().setVisible(false);
-        this.treeController.getvBoxBFS().setVisible(true);
+       
         this.treeController.getvBoxDFS().setVisible(false);
         this.treeController.getvBoxDelete().setVisible(false);
         this.treeController.getvBoxUpdate().setVisible(false);

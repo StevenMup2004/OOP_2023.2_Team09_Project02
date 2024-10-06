@@ -1,9 +1,11 @@
 package screen.controller;
 
 import javafx.event.ActionEvent;
+import javafx.util.Duration;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
-
+import javafx.animation.FadeTransition;
 public class MainWindowController {
     @FXML
     private Label welcomeText;
@@ -38,12 +40,19 @@ public class MainWindowController {
     void btnGenericTreePressed(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/screen/fxml/GenericTree.fxml"));
         mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
         GenericTreeController genericController = new GenericTreeController(mainStage, "Generic Tree Visualizer");
         loader.setController(genericController);
-        Scene scene = new Scene(loader.load(), 1024, 768);
+        Parent root = loader.load();
+      //  Scene scene = new Scene(loader.load(), 1024, 768);
+        Scene scene = new Scene(root, 1024, 768);
+        FadeTransition ft = new FadeTransition(Duration.millis(2000),root);
+        ft.setFromValue(0.0);
+        ft.setToValue(1.0);
+        ft.play();
         this.mainStage.setTitle("Generic Tree");
         this.mainStage.setScene(scene);
-        this.mainStage.setFullScreen(true);
+       this.mainStage.setFullScreen(true);
         this.mainStage.show();
     }
 
@@ -53,10 +62,17 @@ public class MainWindowController {
         mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         BinaryTreeController binaryController = new BinaryTreeController(mainStage, "Binary Tree Visualizer");
         loader.setController(binaryController);
-        Scene scene = new Scene(loader.load(), 1024, 768);
+        Parent root = loader.load();
+       // Scene scene = new Scene(loader.load(), 1024, 768);
+        Scene scene = new Scene(root, 1024, 768);
+        FadeTransition ft = new FadeTransition(Duration.millis(2000),root);
+        ft.setFromValue(0.0);
+        ft.setToValue(1.0);
+        ft.play();
         this.mainStage.setTitle("Binary Tree");
-        this.mainStage.setFullScreen(true);
         this.mainStage.setScene(scene);
+        this.mainStage.setFullScreen(true);
+        
         this.mainStage.show();
     }
 
@@ -76,10 +92,17 @@ public class MainWindowController {
         BalancedTreeController balancedTreeController = new BalancedTreeController(mainStage,
                 "Balanced Tree Visualizer", max_depth);
         loader.setController(balancedTreeController);
-        Scene scene = new Scene(loader.load(), 1024, 768);
+        Parent root = loader.load();
+        // Scene scene = new Scene(loader.load(), 1024, 768);
+         Scene scene = new Scene(root, 1024, 768);
+         FadeTransition ft = new FadeTransition(Duration.millis(2000),root);
+         ft.setFromValue(0.0);
+         ft.setToValue(1.0);
+         ft.play();
         this.mainStage.setTitle("Balanced Tree");
-        this.mainStage.setFullScreen(true);
         this.mainStage.setScene(scene);
+        this.mainStage.setFullScreen(true);
+        
         this.mainStage.show();
     }
 
@@ -100,10 +123,18 @@ public class MainWindowController {
         BalancedBinaryTreeController balancedBinaryTreeController = new BalancedBinaryTreeController(mainStage,
                 "Balanced Binary Tree Visualizer", max_depth);
         loader.setController(balancedBinaryTreeController);
-        Scene scene = new Scene(loader.load(), 1024, 768);
+       // Scene scene = new Scene(loader.load(), 1024, 768);
+        Parent root = loader.load();
+        // Scene scene = new Scene(loader.load(), 1024, 768);
+         Scene scene = new Scene(root, 1024, 768);
+         FadeTransition ft = new FadeTransition(Duration.millis(2000),root);
+         ft.setFromValue(0.0);
+         ft.setToValue(1.0);
+         ft.play();
         this.mainStage.setTitle("Balanced Binary Tree");
-        this.mainStage.setFullScreen(true);
         this.mainStage.setScene(scene);
+        this.mainStage.setFullScreen(true);
+        
         this.mainStage.show();
     }
 

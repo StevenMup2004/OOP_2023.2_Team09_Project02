@@ -26,48 +26,48 @@ public class BalancedTree extends GenericTree {
     }
 
     public void forwardInsertStep(int parentId, int childID, Pane scenePane) {
-
-        if (queue == null || timeline == null || timeline.getStatus() == Animation.Status.STOPPED) {
-            return;
-        }
-
+        
+    
         if (traverseNode == null) {
             this.getTreeController().getRecPseudoInsertB2().setFill(recColor2);
             this.getTreeController().getRecPseudoInsertB3().setFill(recColor2);
             this.getTreeController().getRecPseudoInsertB1().setFill(recColor1);
+            
+            this.getTreeController().getRecPseudoInsertB4().setFill(recColor1);
+
+            this.getTreeController().getRecPseudoInsertB5().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsertB6().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsertB7().setFill(recColor1);
+
 
             traverseNode = queue.remove(0);
         }
-
+        System.out.println(traverseNode.getNodeId());
+        System.out.println(traverseNode.getState());
         if (traverseNode.getState() == 1) { // TH1
             try { // duyệt
                 traverseNode.getCircle().setFill(VISIT_COLOR);
                 traverseNode.setState(2);
                 PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
                 pause.setOnFinished(event -> {
+                	 this.getTreeController().getRecPseudoInsertB2().setFill(recColor2);
+                     this.getTreeController().getRecPseudoInsertB3().setFill(recColor2);
+                     this.getTreeController().getRecPseudoInsertB1().setFill(recColor1);
+                     
+                     this.getTreeController().getRecPseudoInsertB4().setFill(recColor1);
 
-                    this.getTreeController().getRecPseudoInsertB2().setFill(recColor1);
-                    this.getTreeController().getRecPseudoInsertB3().setFill(recColor1);
-                    this.getTreeController().getRecPseudoInsertB4().setFill(recColor2);
-                    this.getTreeController().getRecPseudoInsertB5().setFill(recColor2);
+                     this.getTreeController().getRecPseudoInsertB5().setFill(recColor1);
+                     this.getTreeController().getRecPseudoInsertB6().setFill(recColor1);
+                     this.getTreeController().getRecPseudoInsertB7().setFill(recColor1);
+
+
 
                 });
 
                 pause.play();
 
-                if (traverseNode.getNodeId() == parentId) {
-                    Node childNode = new Node(childID);
-                    System.out.println(childNode.getNodeId());
-                    traverseNode.addChild(childNode);
-
-                    scenePane.getChildren().add(childNode.getParentLine());
-                    scenePane.getChildren().add(childNode);
-                    traverseNode.setState(5);
-                    timeline.stop();
-                    isTimelineRunning = false;
-
-                }
-
+      
+               
             } catch (NullPointerException e) {
                 traverseNode.getCircle().setFill(VISIT_COLOR);
                 System.out.println(traverseNode.getNodeId() + " " + traverseNode.getDepth());
@@ -85,15 +85,26 @@ public class BalancedTree extends GenericTree {
             this.getTreeController().getRecPseudoInsertB3().setFill(recColor1);
             this.getTreeController().getRecPseudoInsertB4().setFill(recColor2);
             this.getTreeController().getRecPseudoInsertB5().setFill(recColor2);
+            
+            this.getTreeController().getRecPseudoInsertB6().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsertB7().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsertB1().setFill(recColor1);
+
 
             if (traverseNode.getNodeId() == parentId) {
-                traverseNode.addChild(childID);
-                traverseNode.setState(5);
-                timeline.stop();
-                isTimelineRunning = false;
+            	 Node childNode = new Node(childID);
+                 System.out.println(childNode.getNodeId());
+                 traverseNode.addChild(childNode);
+
+                 scenePane.getChildren().add(childNode.getParentLine());
+                 scenePane.getChildren().add(childNode);
+                 traverseNode.setState(5);
+                 timeline.stop();
+                 isTimelineRunning = false;
+                 return;
 
             }
-            traverseNode.setState(3);
+            else traverseNode.setState(3);
         } else if (traverseNode.getState() == 3) { // TH2
             // thay đổi màu
 
@@ -102,6 +113,9 @@ public class BalancedTree extends GenericTree {
             this.getTreeController().getRecPseudoInsertB6().setFill(recColor2);
             this.getTreeController().getRecPseudoInsertB7().setFill(recColor2);
 
+            this.getTreeController().getRecPseudoInsertB1().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsertB2().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsertB3().setFill(recColor1);
             if (traverseNode.getNumChildren() > 0) { // add con nếu có
                 for (Node n : traverseNode.getListOfChildren()) {
                     queue.add(n);
@@ -115,6 +129,11 @@ public class BalancedTree extends GenericTree {
             this.getTreeController().getRecPseudoInsertB7().setFill(recColor1);
             this.getTreeController().getRecPseudoInsertB2().setFill(recColor2);
             this.getTreeController().getRecPseudoInsertB3().setFill(recColor2);
+
+            this.getTreeController().getRecPseudoInsertB1().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsertB4().setFill(recColor1);
+            this.getTreeController().getRecPseudoInsertB5().setFill(recColor1);
+            
 
             if (queue.size() > 0) { // lấy node đầu của queue ra
                 traverseNode = queue.remove(0);
@@ -567,6 +586,10 @@ public class BalancedTree extends GenericTree {
             this.getTreeController().getRecPseudoDeleteB2().setFill(recColor2);
             this.getTreeController().getRecPseudoDeleteB3().setFill(recColor2);
             this.getTreeController().getRecPseudoDeleteB1().setFill(recColor1);
+            this.getTreeController().getRecPseudoDeleteB4().setFill(recColor1);
+            this.getTreeController().getRecPseudoDeleteB5().setFill(recColor1);
+            this.getTreeController().getRecPseudoDeleteB6().setFill(recColor1);
+            this.getTreeController().getRecPseudoDeleteB7().setFill(recColor1);
             traverseNode = queue.remove(0);
         }
         if (traverseNode.getState() == 1) { // TH1
@@ -578,29 +601,18 @@ public class BalancedTree extends GenericTree {
                 traverseNode.setState(2);
                 PauseTransition pause = new PauseTransition(Duration.seconds(0.43));
                 pause.setOnFinished(event -> {
-                    this.getTreeController().getRecPseudoDeleteB2().setFill(recColor1);
-                    this.getTreeController().getRecPseudoDeleteB3().setFill(recColor1);
-                    this.getTreeController().getRecPseudoDeleteB4().setFill(recColor2);
-                    this.getTreeController().getRecPseudoDeleteB5().setFill(recColor2);
+                	 this.getTreeController().getRecPseudoDeleteB2().setFill(recColor2);
+                     this.getTreeController().getRecPseudoDeleteB3().setFill(recColor2);
+                     this.getTreeController().getRecPseudoDeleteB1().setFill(recColor1);
+                     this.getTreeController().getRecPseudoDeleteB4().setFill(recColor1);
+                     this.getTreeController().getRecPseudoDeleteB5().setFill(recColor1);
+                     this.getTreeController().getRecPseudoDeleteB6().setFill(recColor1);
+                     this.getTreeController().getRecPseudoDeleteB7().setFill(recColor1);
                 });
 
                 pause.play();
 
-                if (traverseNode.getNodeId() == Id) {
-
-                    if (change == 0) {
-                        copyTree = copyTree.copyNode(this.getRootNode());
-                        change = 1;
-                    }
-                    scenePane.getChildren().clear();
-                    makeBalanceDelete(Id, scenePane);
-                    traverseNode.setState(5);
-                    System.out.println(traverseNode.getState());
-                    System.out.println(traverseNode.getNodeId());
-                    System.out.println("bALANCES");
-                    timeline.stop();
-                } else
-                    traverseNode.setState(3);
+                
             } catch (NullPointerException e) {
                 traverseNode.getCircle().setFill(VISIT_COLOR);
                 System.out.println("Error");
@@ -623,6 +635,9 @@ public class BalancedTree extends GenericTree {
             this.getTreeController().getRecPseudoDeleteB3().setFill(recColor1);
             this.getTreeController().getRecPseudoDeleteB4().setFill(recColor2);
             this.getTreeController().getRecPseudoDeleteB5().setFill(recColor2);
+            this.getTreeController().getRecPseudoDeleteB1().setFill(recColor1);
+            this.getTreeController().getRecPseudoDeleteB6().setFill(recColor1);
+            this.getTreeController().getRecPseudoDeleteB7().setFill(recColor1);
             if (traverseNode.getNodeId() == Id) {
                 if (change == 0) {
                     copyTree = copyTree.copyNode(this.getRootNode());
@@ -632,6 +647,7 @@ public class BalancedTree extends GenericTree {
                 scenePane.getChildren().clear();
                 makeBalanceDelete(Id, scenePane);
                 timeline.stop();
+                return;
 
             } else
                 traverseNode.setState(3);
@@ -644,6 +660,9 @@ public class BalancedTree extends GenericTree {
             this.getTreeController().getRecPseudoDeleteB5().setFill(recColor1);
             this.getTreeController().getRecPseudoDeleteB6().setFill(recColor2);
             this.getTreeController().getRecPseudoDeleteB7().setFill(recColor2);
+            this.getTreeController().getRecPseudoDeleteB1().setFill(recColor1);
+            this.getTreeController().getRecPseudoDeleteB2().setFill(recColor1);
+            this.getTreeController().getRecPseudoDeleteB3().setFill(recColor1);
             if (traverseNode.getNumChildren() > 0) { // add con nếu có
                 for (Node n : traverseNode.getListOfChildren()) {
                     queue.add(n);
@@ -657,6 +676,9 @@ public class BalancedTree extends GenericTree {
             this.getTreeController().getRecPseudoDeleteB7().setFill(recColor1);
             this.getTreeController().getRecPseudoDeleteB2().setFill(recColor2);
             this.getTreeController().getRecPseudoDeleteB3().setFill(recColor2);
+            this.getTreeController().getRecPseudoDeleteB1().setFill(recColor1);
+            this.getTreeController().getRecPseudoDeleteB4().setFill(recColor1);
+            this.getTreeController().getRecPseudoDeleteB5().setFill(recColor1);
             if (queue.size() > 0) { // lấy node đầu của queue ra
                 traverseNode = queue.remove(0);
             } else {

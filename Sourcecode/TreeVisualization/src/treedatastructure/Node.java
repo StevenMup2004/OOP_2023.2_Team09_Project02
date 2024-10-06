@@ -15,7 +15,7 @@ import exception.NodeNotExistsException;
 import javax.swing.*;
 
 public class Node extends StackPane {
-    private static final Node NULL = null;
+	private static final Node NULL = null;
     private int nodeId;
     private ArrayList<Node> listOfChildren = new ArrayList<Node>();
     private int depth = 0;
@@ -27,13 +27,13 @@ public class Node extends StackPane {
     private double circleRadius = 30;
     private double strokeWidthCircle = 3.0;
     private double strokeWidthLine = 3.0;
-    private Color colorCircle = Color.WHITE;
+    private Color colorCircle = Color.CHOCOLATE;
 
-    private Color colorStrokeCircle = Color.BLACK;
+    private Color colorStrokeCircle =  Color.LIGHTYELLOW;
 
-    private Color colorStrokeLine = Color.BLACK;
+    private Color colorStrokeLine = Color.LIGHTYELLOW;
 
-    private Color colorStrokeText = Color.BLACK;
+    private Color colorStrokeText = Color.LIGHTYELLOW;
 
     private Color colorFontText = Color.ORANGE;
 

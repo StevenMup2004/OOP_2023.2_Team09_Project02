@@ -1239,7 +1239,15 @@ public class GenericTreeController {
 
         try {
 
-            stackPanePseudo.setVisible(true);
+           
+        	stackPanePseudo.setVisible(true);
+            String node_val = tfNodeInsert.getText();
+            String parent_val = tfParentInsert.getText();
+            int intNodeVal = Integer.parseInt(node_val);
+            int intParentVal = Integer.parseInt(parent_val);
+
+            this.getTreeDataStructure().checkInsertNode(intParentVal, intNodeVal);
+            
             vBoxSearch.setVisible(false);
             vBoxBFS.setVisible(false);
             vBoxDFS.setVisible(false);
@@ -1248,14 +1256,6 @@ public class GenericTreeController {
             vBoxUpdate.setVisible(false);
             vBoxDeleteB.setVisible(false);
             vBoxInsertB.setVisible(false);
-
-            String node_val = tfNodeInsert.getText();
-            String parent_val = tfParentInsert.getText();
-            int intNodeVal = Integer.parseInt(node_val);
-            int intParentVal = Integer.parseInt(parent_val);
-
-            this.getTreeDataStructure().checkInsertNode(intParentVal, intNodeVal);
-
             this.getTreeDataStructure().startInsert(intParentVal, intNodeVal, scenePane);
             InsertPressed insertPressed = new InsertPressed(this.getTreeDataStructure(), this, this.getScenePane(),
                     intNodeVal, intParentVal);

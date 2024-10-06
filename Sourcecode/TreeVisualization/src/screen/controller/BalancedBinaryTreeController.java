@@ -3,10 +3,13 @@ package screen.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import exception.*;
 import screen.controller.operation.InsertPressed;
 import treedatastructure.BalancedBinaryTree;
+import treedatastructure.BalancedTree;
+import treedatastructure.Node;
 
 public class BalancedBinaryTreeController extends BalancedTreeController {
 
@@ -30,10 +33,19 @@ public class BalancedBinaryTreeController extends BalancedTreeController {
         String parent_val = this.getTfParentInsert().getText();
         int intNodeVal = Integer.parseInt(node_val);
         int intParentVal = Integer.parseInt(parent_val);
+        
 
         try {
-
+        	
             this.getTreeDataStructure().checkInsertNode(intParentVal, intNodeVal);
+            stackPanePseudo.setVisible(true);
+            vBoxSearch.setVisible(false);
+            vBoxBFS.setVisible(false);
+            vBoxDFS.setVisible(false);
+            vBoxInsert.setVisible(false);
+            vBoxDelete.setVisible(false);
+            vBoxInsertB.setVisible(true);
+            vBoxDeleteB.setVisible(false);
             InsertPressed insertPressed = new InsertPressed(this.getTreeDataStructure(), this, this.getScenePane(),
                     intNodeVal, intParentVal);
             insertPressed.run();
@@ -54,11 +66,22 @@ public class BalancedBinaryTreeController extends BalancedTreeController {
 
             alert.showAndWait();
         } catch (TreeNotBalancedException e) {
+        	BalancedTree balancedTree = (BalancedTree) this.getTreeDataStructure();
+            Node minDepthNode = balancedTree.findMinDepthLeaf();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Exception");
             alert.setHeaderText(null);
-            alert.setContentText("Looks like the inserted node invades the balance property of tree. ");
-            alert.showAndWait();
+            alert.setContentText(
+                    "Looks like the inserted node invades the balance property of tree. Do you still want to insert it?" + "\nIf you continue to insert, the parent node is changed to"+ minDepthNode.getNodeId());
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    System.out.println("User clicked OK");
+                    InsertPressed insertPressed = new InsertPressed(this.getTreeDataStructure(), this, this.getScenePane(),
+                    intNodeVal, minDepthNode.getNodeId());
+                    insertPressed.run();
+                    this.getHistory().add(insertPressed);
+                }
+            });
         } catch (NodeFullChildrenException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Exception");

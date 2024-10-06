@@ -16,7 +16,9 @@ public class TraversePressed implements UserAction {
     @Override
     public void run() {
         if (algorithm.equals("BFS"))
+        	
             this.getTreeDataStructure().startTraverseTreeBFS();
+        
         else
             this.getTreeDataStructure().startTraverseTreeDFS();
     }
